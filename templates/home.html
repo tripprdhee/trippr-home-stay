@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Property Form</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    form {
+      width: 50%;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    input[type="text"], select, textarea, input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+    
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    input[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    
+    textarea {
+      resize: vertical;
+    }
+  </style>
+</head>
+  <body>
+    <h1>Property Form</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="type">Type:</label>
+      <select name="type">
+        <option value="option1">hotel</option>
+        <option value="option2">Serviced apartment</option>
+        <option value="option3">Apartment in Hotel</option>
+        <option value="option4">Entire Apartment</option>
+      </select>
+      <br>
+      <label for="rental_mode">Rental mode:</label>
+      <input type="text" name="rental_mode">
+      <br>
+      <label for="area">Area:</label>
+      <input type="text" name="area">
+      <br>
+      <label for="city">City:</label>
+      <input type="text" name="city">
+      <br>
+      <label for="state">State:</label>
+      <input type="text" name="state">
+      <br>
+      <label for="pincode">Pincode:</label>
+      <input type="text" name="pincode" pattern="[0-9]{6}">
+      <br>
+      <label for="description">Description:</label>
+      <textarea name="description"></textarea>
+      <br>
+      <label for="sleeping_arrangement">Sleeping arrangement:</label>
+      <input type="text" name="sleeping_arrangement">
+      <br>
+      <label for="washrooms">Washrooms:</label>
+      <input type="text" name="washrooms">
+      <br>
+      <label for="images">Images:</label>
+      <input type="file" name="images">
+      <br>
+      <label for="nearest_station_airport">Nearest airport:</label>
+      <input type="text" name="nearest_station_airport">
+      <br>
+      <label for="nearest_station_bus">Nearest bus station:</label>
+      <input type="text" name="nearest_station_bus">
+      <br>
+      <label for="nearest_station_train">Nearest train station:</label>
+      <input type="text" name="nearest_station_train">
+      <br>
+      <label for="photos">Photos:</label>
+      <input type="text" name="photos">
+      <br>
+      <label for="amenities">Amenities:</label>
+      <input type="text" name="amenities">
+      <br>
+      <label for="preferred_guest">Preferred guest:</label>
+      <input type="text" name="preferred_guest">
+      <br>
+      <label for="length_of_stay">Length of stay:</label>
+      <input type="text" name="length_of_stay">
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

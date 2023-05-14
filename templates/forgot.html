@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%load static %}
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: rgb(140, 132, 132);
+    }
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    h1 {
+        color: white;
+        margin-bottom: 20px;
+        font-size: 36px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    label {
+        color: white;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+    }
+    button[type="submit"] {
+        background-color: white;
+        color: black;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button[type="submit"]:hover {
+        background-color: grey;
+        color: white;
+    }
+</style>
+<body>
+    <div class="login-container"    >
+		<h1 style="color: white;">forgot password</h1>
+        {% if messages %}
+            <ul class="messages" style="color: red;">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+		<form action="#" method="post">
+            {% csrf_token %}
+			<label for="username" style="color: white;">Email:</label>
+			<input type="text" name="email" id="email"  required>
+            <div class="button_size">
+			<button type="submit">submit</button>
+            </div>
+		</form>
+	</div>
+</body>
+</html>

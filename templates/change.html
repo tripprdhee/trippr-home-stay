@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #eee3e3;
+    }
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    h1 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 36px;
+        text-align: center;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+        color: #333;
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: left;
+        width: 100%;
+    }
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+    button[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button[type="submit"]:hover {
+        background-color: #3e8e41;
+    }
+</style>
+<body>
+    <div class="login-container">
+		<h1>change Password Form</h1>
+        <form method="post" action="{% url 'change_password' %}">
+            {% csrf_token %}
+            <label >Email</label>
+			<input type="email" name="email"  required>
+            <br>
+			<label >New Password</label>
+			<input type="password" name="password1"  required >
+            <br>
+			<label >confirm Password:</label>
+			<input type="password" name="password2"  required>
+            <br>
+			<button type="submit">submit</button>
+		</form>
+	</div>
+</body>
+</html>
