@@ -75,14 +75,14 @@ WSGI_APPLICATION = 'triproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hostinformation',
-        'USER':'root',
-        'PASSWORD':'prasan@7205'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'hostinformation',
+#         'USER':'root',
+#         'PASSWORD':'prasan@7205'
+#     }
+# }
 
 
 # Password validation
