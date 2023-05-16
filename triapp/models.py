@@ -9,7 +9,7 @@ class host_UserData(models.Model):
     def __str__(self):
         return self.username
 class Property(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE ,default=User.objects.first().id)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE ,default=1)
     type = models.CharField(max_length=255)
     rental_mode = models.CharField(max_length=255)
     area = models.CharField(max_length=255)
