@@ -77,12 +77,22 @@ WSGI_APPLICATION = 'triproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hostinformation',
-        'USER':'root',
-        'PASSWORD':'prasan@7205'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR/'db.sqlite3',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'hostinformation',
+#         'HOST':'',
+#         'USER':'root',
+#         'PASSWORD':'prasan@7205',
+#         'PORT':'3306'
+#     }
+# }
 
 
 # Password validation
