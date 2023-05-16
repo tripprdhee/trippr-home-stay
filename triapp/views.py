@@ -56,7 +56,7 @@ def host_login(request):
            messages.error(request, 'Invalid email or password.')
            return render(request, 'log.html')
     else:
-        return render(request, 'log.html')
+        return HttpResponse('wel to login page')
 
 
 # def get_data(request, email):
