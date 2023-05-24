@@ -205,6 +205,7 @@ from django.db.models import Q
 from rest_framework.exceptions import PermissionDenied
 from django.conf import settings
 import json
+from django.contrib.auth import get_user
 User = get_user_model()
 @method_decorator(csrf_exempt, name='dispatch')
 class HostSignupView(View):
@@ -245,6 +246,7 @@ class HostLogView(View):
             login(request, user)
             user_data = host_UserData.objects.get(email=email)
             data = {
+                'user_id': user.id,
                 'username': user_data.username,
                 'email': user_data.email,
                 'phone': user_data.phone,
@@ -273,28 +275,96 @@ class HostForgotPasswordView(View):
 @method_decorator(csrf_exempt, name='dispatch')
 class HostChangePasswordView(View):
     def post(self, request):
-        email = request.POST.get('email')
-        password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
+        try:
+            data = json.loads(request.body)
+            email = data.get('email')
+            password = data.get('password')
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON data.'})
 
-        if password1 != password2:
-            return JsonResponse({'error': 'Passwords do not match.'})
-        else:
-            try:
-                user = User.objects.get(email=email)
-            except User.DoesNotExist:
-                return JsonResponse({'error': 'No user with the given email exists.'})
+        if not email:
+            return JsonResponse({'error': 'Email is required.'})
+        elif not password:
+            return JsonResponse({'error': 'Password is required.'})
 
-            user.set_password(password1)
-            user.save()
-            return JsonResponse({'success': 'Your password has been changed successfully.'})
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return JsonResponse({'error': 'No user with the given email exists.'})
 
+        user.set_password(password)
+        user.save()
+        return JsonResponse({'success': 'Your password has been changed successfully.'})
+    
+
+@csrf_exempt
+def home_page(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)  # Parse the JSON data from the request body
+            owner_id = data.get('owner')
+            owner = User.objects.get(id=owner_id)
+            property_data = {
+                'owner': owner,
+                'property_type': data.get('property_type'),
+                'number_properties': data.get('number_properties'),
+                'property_model': data.get('property_model'),
+                'property_name': data.get('property_name'),
+                'house_number': data.get('house_number'),
+                'postal_code': data.get('postal_code'),
+                'city': data.get('city'),
+                'landmark': data.get('landmark'),
+                'instructions': data.get('instructions'),
+                'number_of_bedrooms': data.get('number_of_bedrooms'),
+                'beds': data.get('beds'),
+                'living_room': data.get('living_room'),
+                'other_spaces': data.get('other_spaces'),
+                'shared_spaces': data.get('shared_spaces'),
+                'allowed_guest': data.get('allowed_guest'),
+                'bathroom': data.get('bathroom'),
+                'number_of_bathrooms': data.get('number_of_bathrooms'),
+                'no_of_separate_bathrooms': data.get('no_of_separate_bathrooms'),
+                'apartment_size': data.get('apartment_size'),
+                'general_amenities': data.get('general_amenities'),
+                'cooking_cleaning_amenities': data.get('cooking_cleaning_amenities'),
+                'other_amenities': data.get('other_amenities'),
+                'outside_view': data.get('outside_view'),
+                'email': data.get('email'),
+                'free_meals': data.get('free_meals'),
+                'paid_meals': data.get('paid_meals'),
+                'parking': data.get('parking'),
+                'parking_spots': data.get('parking_spots'),
+                'languages': data.get('languages'),
+                'price_per_night': data.get('price_per_night'),
+                'price_per_week': data.get('price_per_week'),
+                'price_per_month': data.get('price_per_month'),
+                'house_rules': data.get('house_rules'),
+                'photos': data.get('photos'),
+                'gstin': data.get('gstin'),
+                'pan': data.get('pan'),
+                'aadhar': data.get('aadhar'),
+                'state': data.get('state'),
+                'area': data.get('area'),
+                'bank_details':data.get('bank_details'),
+                'locationState': data.get('locationState'),
+            }
+            property = Property(**property_data)
+            property.save()
+            return JsonResponse({'success': 'Property created successfully.'})
+        
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON data.'}, status=400)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    
+    return JsonResponse({'error': 'Invalid request.'})
+
+'''
 method_decorator(login_required(login_url='host_login'), name='dispatch')
 @method_decorator(csrf_exempt, name='dispatch')
 class HomePageView(View):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
-
     def post(self, request):
         try:
             owner = request.user
@@ -302,11 +372,10 @@ class HomePageView(View):
             token = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]  # Get the token from the request headers
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
             user_id = payload['user_id']
-            print(token)
-            
+            print(user_id)
+            print(payload) 
             if user_id != request.user.id:
                 raise PermissionDenied('You are not authorized to perform this action.')
-
             property_data = {
                 'owner': owner,
                 'property_type': request.POST.get('property_type'),
@@ -407,7 +476,7 @@ class HomePageView(View):
             return JsonResponse({'error': str(e)}, status=403)
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=500)
-
+'''
 '''  
 class SearchResultsView(View):
     def get(self, request):
@@ -533,7 +602,7 @@ def get_property_data(request):
         result = []
         for property in properties:
             if 1 <= days <= 6:
-                price_per_night = round(float(property.price_per_night) * days * 1.25, 2)
+                price_per_night = round(float(property.price_per_night) * days * 1.05, 2)
                 data = {
                     'property_type': property.property_type,
                     'city': property.city,
@@ -541,7 +610,7 @@ def get_property_data(request):
                     'price_per_night': price_per_night,
                 }
             elif days == 7:
-                price_per_week = round(float(property.price_per_week) * 1.25, 2)
+                price_per_week = round(float(property.price_per_week) * 1.05, 2)
                 data = {
                     'property_type': property.property_type,
                     'city': property.city,
@@ -549,7 +618,7 @@ def get_property_data(request):
                     'price_per_week': price_per_week,
                 }
             elif days == 30:
-                price_per_month = round(float(property.price_per_month) * 1.25, 2)
+                price_per_month = round(float(property.price_per_month) * 1.05, 2)
                 data = {
                     'property_type': property.property_type,
                     'city': property.city,
@@ -557,7 +626,7 @@ def get_property_data(request):
                     'price_per_month': price_per_month,
                 }
             elif 7 < days < 30:
-                price_per_night = round(float(property.price_per_night) * days * 1.25, 2)
+                price_per_night = round(float(property.price_per_night) * days * 1.05, 2)
                 data = {
                     'property_type': property.property_type,
                     'city': property.city,

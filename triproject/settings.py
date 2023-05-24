@@ -77,7 +77,7 @@ TEMPLATES = [
 ]
 
 
-SECRET_KEY = get_random_secret_key()
+    
 
 WSGI_APPLICATION = 'triproject.wsgi.application'
 
@@ -106,7 +106,7 @@ JWT_AUTH = {
     'JWT_SECRET_KEY': SECRET_KEY,
     'JWT_ALGORITHM': 'HS256',
     'JWT_ALLOW_REFRESH': True,
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=12654321),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=90),
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=60),
 }
 

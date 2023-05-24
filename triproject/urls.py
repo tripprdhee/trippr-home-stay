@@ -27,15 +27,16 @@ from django.contrib import admin
 #     path('change_password', views.host_change_password, name='change_password'),
 # ]
 from django.urls import path
-from triapp.views import HostSignupView, HostLogView, HostForgotPasswordView, HostChangePasswordView,HomePageView,SearchResultsView,AllPropertiesView
-from triapp.views import get_property_data
+from triapp.views import HostSignupView, HostLogView, HostForgotPasswordView, HostChangePasswordView,SearchResultsView,AllPropertiesView
+from triapp.views import get_property_data,home_page
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('host_signup/', HostSignupView.as_view(), name='host_signup'),
     path('host_login/', HostLogView.as_view(), name='host_login'),
     path('host_forgot_password/', HostForgotPasswordView.as_view(), name='host_forgot_password'),
     path('host_change_password/', HostChangePasswordView.as_view(), name='host_change_password'),
-    path('home/', HomePageView.as_view(), name='home/'),
+    # path('home/', HomePageView.as_view(), name='home/'),
+    path('home/',home_page),
     path('search/', SearchResultsView.as_view(), name='search'),
     path('fetch_all/', AllPropertiesView.as_view(), name='all_properties'),
     path('property-data/', get_property_data, name='property_data'),
