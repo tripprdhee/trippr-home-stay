@@ -114,11 +114,12 @@ JWT_AUTH = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tripprdatabase',
-        'HOST':'tripprdatabase.coetjpy0xyag.ap-south-1.rds.amazonaws.com',
+        'NAME': 'hostdata',
+        'HOST':'hostdata.coetjpy0xyag.ap-south-1.rds.amazonaws.com',
         'USER':'admin',
+        'PORT':'3306',
         'PASSWORD':'prasankumardalai',
-        'PORT':'3306'
+        
     }
 }
 
