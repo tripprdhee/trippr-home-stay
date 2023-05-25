@@ -28,7 +28,7 @@ from django.contrib import admin
 # ]
 from django.urls import path
 from triapp.views import HostSignupView, HostLogView, HostForgotPasswordView, HostChangePasswordView,SearchResultsView,AllPropertiesView
-from triapp.views import get_property_data,home_page
+from triapp.views import get_property_data,home_page,showSome
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('host_signup/', HostSignupView.as_view(), name='host_signup'),
@@ -40,5 +40,6 @@ urlpatterns = [
     path('search/', SearchResultsView.as_view(), name='search'),
     path('fetch_all/', AllPropertiesView.as_view(), name='all_properties'),
     path('property-data/', get_property_data, name='property_data'),
-]
+    path('some',showSome)
+]   
 

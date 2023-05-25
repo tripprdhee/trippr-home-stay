@@ -175,7 +175,7 @@
 # #         return render(request,'home.html')
 # #     return render(request,'change.html')
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_exempt
@@ -641,3 +641,5 @@ def get_property_data(request):
 
 
     # ... your existing methods ...
+def showSome(request):
+    return HttpResponse ("welcome to my page")
