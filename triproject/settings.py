@@ -119,7 +119,9 @@ DATABASES = {
         'USER':'admin',
         'PORT':'3306',
         'PASSWORD':'prasankumardalai',
-        
+        'OPTIONS': {
+            'sql_mode': 'STRICT_TRANS_TABLES',
+        },
     }
 }
 
