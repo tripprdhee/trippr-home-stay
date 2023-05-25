@@ -114,15 +114,14 @@ JWT_AUTH = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hostdata',
-        'HOST':'hostdata.coetjpy0xyag.ap-south-1.rds.amazonaws.com',
+        'NAME': 'host_trippr',
+        'HOST':'database.coetjpy0xyag.ap-south-1.rds.amazonaws.com',
         'USER':'admin',
         'PORT':'3306',
         'PASSWORD':'prasankumardalai',
         
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
