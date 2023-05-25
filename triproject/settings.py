@@ -89,12 +89,12 @@ WSGI_APPLICATION = 'triproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR/'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR/'db.sqlite3',
+    }
+}
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -111,16 +111,16 @@ JWT_AUTH = {
 }
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hostinformation',
-        'HOST':'',
-        'USER':'root',
-        'PASSWORD':'prasan@7205',
-        'PORT':'3306'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'hostinformation',
+#         'HOST':'',
+#         'USER':'root',
+#         'PASSWORD':'prasan@7205',
+#         'PORT':'3306'
+#     }
+# }
 
 
 # Password validation
