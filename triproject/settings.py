@@ -62,6 +62,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'triproject.urls'
 CORS_ORIGIN_ALLOW_ALL = True 
+CORS_ALLOW_HEADERS = ['Content-Type']
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
