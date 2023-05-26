@@ -301,7 +301,7 @@ class HostChangePasswordView(View):
 @csrf_exempt
 def home_page(request):
     return HttpResponse('welcome to homepage')
-
+@method_decorator(csrf_exempt, name='dispatch')
 class AddPropertyView(View):
     def post(self, request):
         try:
