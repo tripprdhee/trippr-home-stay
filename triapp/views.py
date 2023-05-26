@@ -569,7 +569,7 @@ class AllPropertiesView(View):
             'number_of_bedrooms', 'beds', 'living_room', 'other_spaces', 'shared_spaces',
             'allowed_guest', 'bathroom', 'number_of_bathrooms', 'no_of_separate_bathrooms',
             'apartment_size', 'general_amenities', 'cooking_cleaning_amenities', 'other_amenities',
-            'outside_view', 'emailw', 'free_meals', 'paid_meals', 'parking', 'parking_spots',
+            'outside_view', 'email', 'free_meals', 'paid_meals', 'parking', 'parking_spots',
             'languages', 'price_per_night', 'price_per_week', 'price_per_month', 'house_rules',
             'photos', 'gstin', 'pan', 'aadhar', 'state', 'is_active', 'is_deleted',
             'created_at', 'updated_at'
