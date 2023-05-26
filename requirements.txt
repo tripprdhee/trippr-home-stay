@@ -28,7 +28,7 @@ PyMySQL==1.0.3
 pypiwin32==223
 python-dateutil==2.8.2
 pytz==2023.3
-pywin32==306
+pywin32>=300
 requests==2.29.0
 six==1.16.0
 soupsieve==2.4.1
