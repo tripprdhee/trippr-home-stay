@@ -116,14 +116,23 @@ JWT_AUTH = {
 }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'host_trippr',
+#         'HOST':'database.coetjpy0xyag.ap-south-1.rds.amazonaws.com',
+#         'USER':'admin',
+#         'PORT':'3306',
+#         'PASSWORD':'prasankumardalai',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'host_trippr',
-        'HOST':'database.coetjpy0xyag.ap-south-1.rds.amazonaws.com',
-        'USER':'admin',
-        'PORT':'3306',
-        'PASSWORD':'prasankumardalai',
+        'NAME': 'hostinformation',
+        'USER': 'root',
+        'PASSWORD': 'prasan@7205'
+
     }
 }
 
