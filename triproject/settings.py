@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'triapp',
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders'
 ]
 
 from rest_framework_jwt.settings import api_settings
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -59,7 +61,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'triproject.urls'
-
+CORS_ORIGIN_ALLOW_ALL = True 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
