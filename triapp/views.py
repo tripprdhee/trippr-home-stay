@@ -300,7 +300,10 @@ class HostChangePasswordView(View):
 
 @csrf_exempt
 def home_page(request):
-    if request.method == 'POST':
+    return HttpResponse('welcome to homepage')
+
+class AddPropertyView(View):
+    def post(self, request):
         try:
             data = json.loads(request.body)  # Parse the JSON data from the request body
             owner_id = data.get('owner')
@@ -352,14 +355,15 @@ def home_page(request):
             property = Property(**property_data)
             property.save()
             saved_property_data = model_to_dict(property)
-            return JsonResponse({'success': 'Property created successfully.','property': saved_property_data})
-        
+            return JsonResponse({'success': 'Property created successfully.', 'property': saved_property_data})
+
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON data.'}, status=400)
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=500)
-    
-    return JsonResponse({'error': 'Invalid request.'})
+
+    def get(self, request):
+        return JsonResponse({'error': 'Invalid request.'})
 
 '''
 method_decorator(login_required(login_url='host_login'), name='dispatch')
