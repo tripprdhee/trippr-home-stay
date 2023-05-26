@@ -206,6 +206,7 @@ from rest_framework.exceptions import PermissionDenied
 from django.conf import settings
 import json
 from django.contrib.auth import get_user
+from django.forms.models import model_to_dict
 User = get_user_model()
 @method_decorator(csrf_exempt, name='dispatch')
 class HostSignupView(View):
@@ -350,7 +351,8 @@ def home_page(request):
             }
             property = Property(**property_data)
             property.save()
-            return JsonResponse({'success': 'Property created successfully.'})
+            saved_property_data = model_to_dict(property)
+            return JsonResponse({'success': 'Property created successfully.','property': saved_property_data})
         
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON data.'}, status=400)
@@ -526,7 +528,7 @@ class SearchResultsView(View):
             Q(cooking_cleaning_amenities__iexact=query) |
             Q(other_amenities__iexact=query) |
             Q(outside_view__iexact=query) |
-            Q(meals_type__iexact=query) |
+            Q(bank_details__iexact=query) |
             Q(free_meals__iexact=query) |
             Q(paid_meals__iexact=query) |
             Q(parking__iexact=query) |
@@ -567,7 +569,7 @@ class AllPropertiesView(View):
             'number_of_bedrooms', 'beds', 'living_room', 'other_spaces', 'shared_spaces',
             'allowed_guest', 'bathroom', 'number_of_bathrooms', 'no_of_separate_bathrooms',
             'apartment_size', 'general_amenities', 'cooking_cleaning_amenities', 'other_amenities',
-            'outside_view', 'meals_type', 'free_meals', 'paid_meals', 'parking', 'parking_spots',
+            'outside_view', 'emailw', 'free_meals', 'paid_meals', 'parking', 'parking_spots',
             'languages', 'price_per_night', 'price_per_week', 'price_per_month', 'house_rules',
             'photos', 'gstin', 'pan', 'aadhar', 'state', 'is_active', 'is_deleted',
             'created_at', 'updated_at'
