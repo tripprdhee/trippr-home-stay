@@ -62,7 +62,18 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'triproject.urls'
 CORS_ORIGIN_ALLOW_ALL = True 
-CORS_ALLOW_HEADERS = ['Content-Type']
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    # 'http://localhost:3001',
+    # 'http://localhost:4400',
+    # 'http://localhost:4202',
+    # 'http://localhost:8081',
+    # 'https://www.docsteth.com',
+    # 'https://webinar.docsteth.com',
+    # "https://medxperts.docsteth.com",
+    # 'http://localhost:4000',
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
