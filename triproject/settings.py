@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'triapp',
     'rest_framework',
     'rest_framework_simplejwt',
-    'corsheaders'
+    'corsheaders',
 ]
 
 from rest_framework_jwt.settings import api_settings
