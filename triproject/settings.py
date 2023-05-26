@@ -31,7 +31,10 @@ SECRET_KEY = 'django-insecure-cagg_e2v)evvxwwdm52le$19oq#@&!$rsl(p+5o+4r-x^$l-l-
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CORS_ORIGIN_ALLOW_ALL = True 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
 
 # Application definition
 
@@ -47,8 +50,6 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
 ]
-
-from rest_framework_jwt.settings import api_settings
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,19 +61,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+from rest_framework_jwt.settings import api_settings
+
 ROOT_URLCONF = 'triproject.urls'
-CORS_ORIGIN_ALLOW_ALL = True 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    # 'http://localhost:3001',
-    # 'http://localhost:4400',
-    # 'http://localhost:4202',
-    # 'http://localhost:8081',
-    # 'https://www.docsteth.com',
-    # 'https://webinar.docsteth.com',
-    # "https://medxperts.docsteth.com",
-    # 'http://localhost:4000',
-]
 
 TEMPLATES = [
     {
