@@ -205,6 +205,7 @@ from django.db.models import Q
 from rest_framework.exceptions import PermissionDenied
 from django.conf import settings
 import json
+import re
 from django.contrib.auth import get_user
 from django.forms.models import model_to_dict
 User = get_user_model()
@@ -217,8 +218,14 @@ class HostSignupView(View):
         phone = jsonData.get('phone')
         password = jsonData.get('password')
         
+         # Email verification
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+            return JsonResponse({'success': False, 'message': 'Invalid email format.'})
         if User.objects.filter(email=email).exists():
             return JsonResponse({'success': False, 'message': 'email is already taken.'})
+        # Phone verification
+        if not re.match(r"^[0-9]{10}$", phone):
+            return JsonResponse({'success': False, 'message': 'Invalid phone number format.'})
         user_data = host_UserData(username=username, email=email, phone=phone, password=make_password(password))
         user_data.save()
 

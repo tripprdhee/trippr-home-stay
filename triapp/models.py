@@ -34,7 +34,7 @@ class Property(models.Model):
     cooking_cleaning_amenities = models.CharField(max_length=255,null=True,blank=True)
     other_amenities = models.CharField(max_length=255,null=True,blank=True)
     outside_view = models.CharField(max_length=255,null=True,blank=True)
-    email=models.EmailField(max_length=100,unique=True,null=True,blank=True)
+    email=models.EmailField(max_length=100,null=True,blank=True)
     free_meals = models.CharField(max_length=255,null=True,blank=True)
     paid_meals = models.CharField(max_length=255,null=True,blank=True)
     parking = models.CharField(max_length=255,null=True,blank=True)
