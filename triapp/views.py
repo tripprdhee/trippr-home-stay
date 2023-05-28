@@ -225,9 +225,9 @@ class HostSignupView(View):
             return JsonResponse({'success': False, 'message': 'email is already taken.'})
         # Phone verification
         if not re.match(r"^[0-9]{10}$", phone):
-            return JsonResponse({'success': False, 'message': 'Invalid phone number format.'})
+            return JsonResponse({'success': False, 'message': 'Invalid phone number format.'})  
         user_data = host_UserData(username=username, email=email, phone=phone, password=make_password(password))
-        user_data.save()
+        user_data.save() 
 
         user = User.objects.create_user(username=email, email=email, password=password)
         user.save()
