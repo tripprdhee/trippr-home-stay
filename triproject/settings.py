@@ -81,7 +81,7 @@ TEMPLATES = [
     },
 ]
 
-
+ 
     
 
 WSGI_APPLICATION = 'triproject.wsgi.application'
@@ -94,12 +94,12 @@ WSGI_APPLICATION = 'triproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR/'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR/'db.sqlite3',
+#     }
+# }
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -116,16 +116,16 @@ JWT_AUTH = {
 }
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'host_trippr',
-#         'HOST':'database.coetjpy0xyag.ap-south-1.rds.amazonaws.com',
-#         'USER':'admin',
-#         'PORT':'3306',
-#         'PASSWORD':'prasankumardalai',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'host_trippr',
+        'HOST':'database.coetjpy0xyag.ap-south-1.rds.amazonaws.com',
+        'USER':'admin',
+        'PORT':'3306',
+        'PASSWORD':'prasankumardalai',
+    }
+}
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
