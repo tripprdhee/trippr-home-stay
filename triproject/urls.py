@@ -41,6 +41,6 @@ urlpatterns = [
     path('search/', SearchResultsView.as_view(), name='search'),
     path('fetch_all/', AllPropertiesView.as_view(), name='all_properties'),
     path('property-data/', get_property_data, name='property_data'),
-    path('some',showSome)
+    path('',showSome)
 ]   
 
