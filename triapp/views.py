@@ -655,4 +655,5 @@ def get_property_data(request):
 
     # ... your existing methods ...
 def showSome(request):
-    return HttpResponse ("welcome to my page")
+    return HttpResponse ("welcome")
+
