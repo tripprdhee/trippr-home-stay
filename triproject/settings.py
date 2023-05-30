@@ -114,18 +114,26 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=90),
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=60),
 }
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'host_trippr',
-        'HOST':'database.coetjpy0xyag.ap-south-1.rds.amazonaws.com',
-        'USER':'admin',
-        'PORT':'3306',
-        'PASSWORD':'prasankumardalai',
+        'HOST': '/cloudsql/node-backend-388108:us-central1:home-stay',
+        'USER': 'home-stay',
+        'PASSWORD': 'homeStay',
+        'NAME': 'home-stay',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'host_trippr',
+#         'HOST':'database.coetjpy0xyag.ap-south-1.rds.amazonaws.com',
+#         'USER':'admin',
+#         'PORT':'3306',
+#         'PASSWORD':'prasankumardalai',
+#     }
+# }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
