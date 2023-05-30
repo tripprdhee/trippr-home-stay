@@ -653,5 +653,6 @@ def get_property_data(request):
         return JsonResponse(result, safe=False)
     # ... your existing methods ...
 def showSome(request):
-    return HttpResponse ("welcome")
+    return HttpResponse ("welcome my page ")
+
 
