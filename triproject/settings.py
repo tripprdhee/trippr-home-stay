@@ -24,7 +24,7 @@ import os
 port = os.environ.get('$PORT')
 
 # Set the default port to 8000 if the environment variable is not set
-port = int(port) if port else 8000
+port = int(port) if port else 8080
 
 # Update the ALLOWED_HOSTS setting to include the Cloud Run service URL
 ALLOWED_HOSTS = [f'{os.environ.get("GOOGLE_CLOUD_RUN_SERVICE_HOST")}:{port}']
