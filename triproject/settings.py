@@ -16,6 +16,20 @@ import os
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 
+import os
+
+# ...
+
+# Get the assigned port number from the PORT environment variable
+port = os.environ.get('$PORT')
+
+# Set the default port to 8000 if the environment variable is not set
+port = int(port) if port else 8000
+
+# Update the ALLOWED_HOSTS setting to include the Cloud Run service URL
+ALLOWED_HOSTS = [f'{os.environ.get("GOOGLE_CLOUD_RUN_SERVICE_HOST")}:{port}']
+
+# ...
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -64,6 +78,7 @@ MIDDLEWARE = [
 from rest_framework_jwt.settings import api_settings
 
 ROOT_URLCONF = 'triproject.urls'
+
 
 TEMPLATES = [
     {

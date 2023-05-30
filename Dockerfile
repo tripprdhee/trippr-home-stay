@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Set the entry point command to run the Django application
-CMD ["python", "manage.py", "runserver", "0.0.0.0:$PORT"]
+CMD gunicorn project_name.wsgi --bind 0.0.0.0:$PORT
